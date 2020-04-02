@@ -1,36 +1,68 @@
-(function(){
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    var uiConfig = {
-        callbacks: {
-          signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-            // User successfully signed in.
-            // Return type determines whether we continue the redirect automatically
-            // or whether we leave that to developer to handle.
-            return true;
-          },
-          uiShown: function() {
-            // The widget is rendered.
-            // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
-          }
-        },
-        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-        signInFlow: 'popup',
-        signInSuccessUrl: 'main.html',
-        signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
-          //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-          //firebase.auth.GithubAuthProvider.PROVIDER_ID,
-          firebase.auth.EmailAuthProvider.PROVIDER_ID,
-          //firebase.auth.PhoneAuthProvider.PROVIDER_ID
-        ],
-        // Terms of service url.
-        tosUrl: 'main.html',
-        // Privacy policy url.
-        privacyPolicyUrl: 'main.html'
-      };
+var optionBox = document.getElementById("optionBox");
+var loginBox = document.getElementById("loginBox");
+var signupBox = document.getElementById("signupBox");
+var register = document.querySelector(".signup");
+var login = document.querySelector(".login");
+var signout = document.querySelector(".signout");
 
-      ui.start('#firebaseui-auth-container', uiConfig);
-})()
+function hider(option) {
+  optionBox.style.visibility = "hidden";
+  if (option == "login") {
+    loginBox.style.visibility = "visible";
+    signupBox.style.visibility = "hidden";
+  } else {
+    loginBox.style.visibility = "hidden";
+    signupBox.style.visibility = "visible";
+  }
+}
+
+/*Register*/
+register.addEventListener("submit", e => {
+  e.preventDefault();
+  const email = register.email.value;
+  const password = register.password.value;
+  const username = register.username.value;
+
+  firebase.auth().createUserWithEmailAndPassword(email, password);
+
+  async function checkUser() {
+    await firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        user.updateProfile({
+          displayName: username
+        });
+      }
+    });
+  }
+  checkUser();
+});
+
+/*Login*/
+login.addEventListener("submit", e => {
+  e.preventDefault();
+  const email = login.email.value;
+  const password = login.password.value;
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(user => {
+      login.reset();
+      window.location.replace("main.html");
+    })
+    .catch(e => {
+      login.querySelector(".error").textContent = e.message;
+    });
+});
+
+/*User state*/
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    login.classList.add("hidden");
+    register.classList.add("hidden");
+    signout.classList.remove("hidden");
+  } else {
+    login.classList.remove("hidden");
+    register.classList.remove("hidden");
+    signout.classList.add("hidden");
+  }
+});

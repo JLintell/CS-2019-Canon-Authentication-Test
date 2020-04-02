@@ -8,14 +8,69 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link rel="stylesheet" href="login.css">
+    
 </head>
 <body>
-    <h1>Canon - Login</h1>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-    <script src="firebase.js"></script>
+    <div id="logoBg">
+        <img id="canonLogo" src="canon_white.png">
+    </div>
+    <div id="optionBox" class="layer1" style="visibility: hidden;">
+      <div id="container">
+        <button onclick="hider(login)" id="logbox" class="loginButton">
+          <h1 id="login">Login</h1>
+        </button>
+      </div>
+      <div id="container2">
+        <button onclick="hider(signup)" id="signbox" class="signupButton">
+          <h1 id="signup">Sign up</h1>
+        </button>
+      </div>
+    </div>
+
+    <div id="loginBox" class="hidden layer2" style="visibility: visible;">
+      <form class="login">
+        <div class="container4">
+          <input id="loginbox" type="text" name="email" placeholder="email">
+        </div>
+        <div class="container5">
+          <input id="loginbox2" type="password" name="password" placeholder="password">
+        </div>
+        <div class="container6">
+          <button id="loginbox">
+            <h1 id="loginButton">Login</h1>
+          </button>
+        </div>
+        <p class="error"></p>
+      </form>
+      <div id="q">
+        <a class="switch" onclick="hider(signup)"><u>Don't have an account? Sign up</u></a>
+      </div>
+    </div>
+
+    <div id="signupBox" class="hidden layer3" style="visibility: hidden;">
+      <form class="signup">
+        <div id="container3">
+          <input class="registerbox" type="text" name="email" placeholder="example@email.com">
+        </div>
+        <div id="container3">
+          <input class="registerbox" type="text" name="username" placeholder="username">
+        </div>
+        <div id="container3">
+          <input class="registerbox" type="password" name="password" placeholder="password">
+        </div>
+        <div id="container4">
+          <button id="signupbox">
+            <h1 id="signupbutton">Sign Up</h1>
+          </button>
+        </div>
+        <p class="error"></p>
+      </form>
+      <div id="q">
+        <a class="switch" onclick="hider(&#39;login&#39;)"><u>Already have an account? Login</u></a>
+      </div>
+    </div>
     <script src="login.js"></script>
+    <script src="firebase.js"></script>
 </body>
 </html>
