@@ -50,7 +50,7 @@ login.addEventListener("submit", e => {
       window.location.replace("main.html");
     })
     .catch(e => {
-      login.querySelector(".error").textContent = e.message;
+      login.querySelector(".error").textContent = "The email / password you have entered is incorrect. Please try again.";
     });
 });
 

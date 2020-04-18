@@ -12,9 +12,7 @@
     
 </head>
 <body>
-    <div id="logoBg">
-        <img id="canonLogo" src="canon_white.png">
-    </div>
+    <img id="canonLogo" src="canon_white.png">
     <div id="optionBox" class="layer1" style="visibility: hidden;">
       <div id="container">
         <button onclick="hider(login)" id="logbox" class="loginButton">
@@ -30,46 +28,84 @@
 
     <div id="loginBox" class="hidden layer2" style="visibility: visible;">
       <form class="login">
-        <div class="container4">
-          <input id="loginbox" type="text" name="email" placeholder="email">
+        <div class="container4 buttonCenter">
+          <div></div>
+          <input id="loginbox" class="inpButton" type="text" name="email" placeholder="email">
+          <div></div>
         </div>
-        <div class="container5">
-          <input id="loginbox2" type="password" name="password" placeholder="password">
+        <div class="container5 buttonCenter">
+          <div></div>
+          <input id="loginbox" class="inpButton" type="password" name="password" placeholder="password">
+          <div></div>
         </div>
-        <div class="container6">
+        <div class="forgotPass">
+          <div></div>
+          <button id="forgot" onmousedown="mouseDown()" onmouseup="mouseUp()">
+            <h1 id="recovery">Forgot password?</h1>
+          </button>
+          <div></div>
+        </div>
+        <div class="container6 buttonCenter2">
+          <div></div>
           <button id="loginbox">
             <h1 id="loginButton">Login</h1>
           </button>
+          <div></div>
         </div>
         <p class="error"></p>
+        <div id="q" class="container6 buttonCenter3">
+          <div></div>
+          <a class="switch" id="signupbox" onclick="hider(signup)">
+            <h1 id="signupButton">Signup</h1>
+          </a>
+          <div></div>
+        </div>
       </form>
-      <div id="q">
-        <a class="switch" onclick="hider(signup)"><u>Don't have an account? Sign up</u></a>
-      </div>
     </div>
 
     <div id="signupBox" class="hidden layer3" style="visibility: hidden;">
       <form class="signup">
-        <div id="container3">
-          <input class="registerbox" type="text" name="email" placeholder="example@email.com">
+        <div id="container3" class="buttonCenter">
+          <div></div>
+          <input id="loginbox" class="registerbox inpButton" type="text" name="email" placeholder="email">
+          <div></div>
         </div>
-        <div id="container3">
-          <input class="registerbox" type="text" name="username" placeholder="username">
+        <div id="container3" class="buttonCenter">
+          <div></div>
+          <input id="loginbox" class="registerbox inpButton" type="text" name="username" placeholder="username">
+          <div></div>
         </div>
-        <div id="container3">
-          <input class="registerbox" type="password" name="password" placeholder="password">
+        <div id="container3" class="buttonCenter">
+          <div></div>
+          <input id="loginbox" class="registerbox inpButton" type="password" name="password" placeholder="password">
+          <div></div>
         </div>
         <div id="container4">
+          <div></div>
           <button id="signupbox">
-            <h1 id="signupbutton">Sign Up</h1>
+            <h1 id="signupbutton" class="signupButton">Sign Up</h1>
           </button>
+          <div></div>
         </div>
         <p class="error"></p>
       </form>
-      <div id="q">
-        <a class="switch" onclick="hider(&#39;login&#39;)"><u>Already have an account? Login</u></a>
+      <div id="q" class="container6 buttonCenter3">
+        <div></div>
+        <a class="switch" id="signupbox" onclick="hider(&#39;login&#39;)">
+          <h1 id="goBack">Go back</h1>
+        </a>
+        <div></div>
       </div>
     </div>
+    <script>
+      function mouseDown() {
+        document.getElementById("forgot").style.backgroundColor = "#d34300";
+      }
+      
+      function mouseUp() {
+        document.getElementById("forgot").style.backgroundColor = "#ff5100";
+      }
+      </script>
     <script src="login.js"></script>
     <script src="firebase.js"></script>
 </body>
