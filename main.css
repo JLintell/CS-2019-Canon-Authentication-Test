@@ -1,0 +1,54 @@
+body {
+  background-color: #212121;
+}
+
+.header-canon {
+  background-color: #424242;
+  height: 11vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer-canon {
+  background-color: #424242;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo-canon {
+  height: 6vh;
+}
+
+.icon-canon {
+  font-size: 6vh;
+}
+
+.card-cannon {
+  display: flex;
+  flex-direction: column;
+  border: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.pfp {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+}
+
+.carousel {
+  height: 600px;
+}
+
+h5 {
+  color: white;
+  text-align: center;
+}
