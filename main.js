@@ -1,9 +1,9 @@
 var mainApp = {};
 
-(function() {
+(function () {
   var firebase = app_firebase;
   var uid = null;
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
       uid = user.uid;
@@ -21,7 +21,7 @@ var mainApp = {};
   mainApp.logOut = logOut;
 })();
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var elems = document.querySelectorAll(".carousel");
   var instances = M.Carousel.init(elems, { dist: -80, fullWidth: true });
 });

@@ -35,7 +35,8 @@ body {
 .row {
   display: flex;
   flex-direction: row;
-  padding: 5px;
+  padding: 12px;
+  margin: 0px;
 }
 
 .pfp {
@@ -51,4 +52,5 @@ body {
 h5 {
   color: white;
   text-align: center;
+  margin: 12px;
 }
